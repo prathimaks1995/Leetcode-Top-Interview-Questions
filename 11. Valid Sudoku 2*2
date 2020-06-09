@@ -1,0 +1,36 @@
+def isValidSudoku(board):
+    if not board:
+        return False
+    digits = {str(i) for i in range(1, 5)}
+    rows = [set() for i in range(4)]
+    cols = [set() for i in range(4)]
+    boxes = [set() for i in range(4)]
+
+    for i in range(4):
+        for j in range(4):
+            num = board[i][j]
+            if num == '.':
+                continue
+            if num not in digits:
+                print(num)
+                return False
+
+            box_position = 2 * (i // 2) + (j // 2)
+
+            if num in boxes[box_position] or num in rows[i] or num in cols[j]:
+                return False
+
+            rows[i].add(num)
+            cols[j].add(num)
+            boxes[box_position].add(num)
+    return True
+
+
+input=[
+  ["1","2","3","4"],
+  ["3","4",".","."],
+  ["2",".",".","."],
+  ["4",".",".","."],
+]
+
+print(isValidSudoku(input))
