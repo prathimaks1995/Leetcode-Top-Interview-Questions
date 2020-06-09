@@ -1,0 +1,12 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        c = ''
+        for i in digits:
+            c += str(i)
+        sum=int(c)+1
+        out=[]
+        for i in str(sum):
+            out.append(i)
+        return out
+        
+        #Time complexity is -n 
